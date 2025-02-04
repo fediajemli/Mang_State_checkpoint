@@ -1,0 +1,28 @@
+
+
+.buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.edit-btn,
+.delete-btn {
+  border: none;
+  background: none;
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.edit-btn {
+  background: blue;
+  color: white;
+}
+
+.delete-btn {
+  background: red;
+  color: white;
+}
