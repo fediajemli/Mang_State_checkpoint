@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
 import TodosList from './TodosList';
 import { useForm } from 'react-hook-form';
+import useTodos from '../hooks/useContext';
 
 
-const Form = ({handleAddTodo}) => {
-    const {register, formState:{errors}}= useForm();
-    console.log(errors)
+const Form = ({}) => {
+    const {handleAddTodo}=useTodos();
+ 
 const [title,setTitle]=useState('')
    const [text,setText]=useState('')
    const handleTitleChange = (e)=>{

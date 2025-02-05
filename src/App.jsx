@@ -2,40 +2,42 @@
 import React, { useState } from 'react'
 import Form from './Component/Form';
 import TodosList from './Component/TodosList';
-
+import Filter from './Component/Filter';
+import useTodos from './hooks/useContext';
 const App = () => {
-  //  const [title,setTitle]=useState('')
-  //  const [text,setText]=useState('')
-     const [todos, setTodos]=useState([]);
-    //  const handleTitleChange = (e)=>{
-    //   setTitle(e.target.value);
-    //  }
-    //  const handleTextChange = (e)=>{
-    //   setText(e.target.value);
-    //  }
-    const handleAddTodo = (title,text)=>{
-      if(!text.trim() || !title.trim()) return;
-      const todo = {
-        id:todos.length + 1,
-        title,
-        text,
-        isCompleted:false,
-      }
-      setTodos([todo,...todos]);
+  const {todos} = useTodos();
+  // //  const [title,setTitle]=useState('')
+  // //  const [text,setText]=useState('')
+  //    const [todos, setTodos]=useState([]);
+  //   //  const handleTitleChange = (e)=>{
+  //   //   setTitle(e.target.value);
+  //   //  }
+  //   //  const handleTextChange = (e)=>{
+  //   //   setText(e.target.value);
+  //   //  }
+  //   const handleAddTodo = (title,text)=>{
+  //     if(!text.trim() || !title.trim()) return;
+  //     const todo = {
+  //       id:todos.length + 1,
+  //       title,
+  //       text,
+  //       isCompleted:false,
+  //     }
+  //     setTodos([todo,...todos]);
       
 
 
-    }
-    const  deletTodo = (id)=>{
-      setTodos(todos.filter((todo)=> todo.id !== id))
-    }
-    const toggleCompleted = (id)=>{
-      setTodos(todos.map((todo)=> todo.id === id ? {...todo, isCompleted: !todo.isCompleted}:todo))
-    }
+  //   }
+  //   const  deletTodo = (id)=>{
+  //     setTodos(todos.filter((todo)=> todo.id !== id))
+  //   }
+  //   const toggleCompleted = (id)=>{
+  //     setTodos(todos.map((todo)=> todo.id === id ? {...todo, isCompleted: !todo.isCompleted}:todo))
+  //   }
  
 
   return (
-    <>
+    <div className='container'>
     
     
     
@@ -56,7 +58,7 @@ const App = () => {
       <button disabled={!text.trim() || !title.trim()} onClick={handleAddTodo} className='btn btn-outline-dark mt-3'>Add</button>
   
     </div> */}
-    <Form handleAddTodo={handleAddTodo}/>
+    <Form/>
     {/* <div className="todo-item">
       <ul className='list-group'>
      {
@@ -81,11 +83,12 @@ const App = () => {
       </ul>
 
         </div> */}
+        {todos.length !== 0 && <Filter/> }
+       
         <div style={{maxWidth:'450px'}} className='todo-list m-3' > 
-
-    <TodosList todos={todos} toggleCompleted={toggleCompleted} deletTodo={deletTodo} />
+          <TodosList />
         </div>
-    </>
+    </div>
   )
 }
 

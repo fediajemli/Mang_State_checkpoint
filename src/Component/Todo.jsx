@@ -1,7 +1,9 @@
 import React, { useState } from 'react'
 import {  FaEdit, FaTimes } from "react-icons/fa";
+import useTodos from '../hooks/useContext';
+const Todo = ({todo}) => {
+  const {deletTodo, toggleCompleted} = useTodos();
 
-const Todo = ({todo, toggleCompleted, deletTodo}) => {
    
         
   
